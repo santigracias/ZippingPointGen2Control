@@ -1,0 +1,116 @@
+cycle:
+  steps:
+    - type: ev2
+      name: "Cycle Init: Home EV2 doors"
+      action: "home_ev2_doors"
+      sleep_after: 2.5
+
+    - type: arduino
+      name: "Step 1: Open lid"
+      cmd: "open_lid"
+      expect: "LID_OPEN"
+      timeout: 3
+
+    - type: sleep
+      name: "Step 2: Pause 2 seconds"
+      seconds: 2
+
+    - type: arduino
+      name: "Step 2b: Close lid"
+      cmd: "close_lid"
+      expect: "LID_CLOSED"
+      timeout: 3
+
+    - type: arduino
+      name: "Step 3: Nano to 5 rev"
+      cmd: "nano_move:5"
+      expect: "NANO_DONE"
+      timeout: 30
+
+    - type: arduino
+      name: "Step 4: Open lid (ensure)"
+      cmd: "open_lid"
+      expect: "LID_OPEN"
+      timeout: 3
+
+    - type: arduino
+      name: "Step 6: Nano to 33 rev"
+      cmd: "nano_move:33"
+      expect: "NANO_DONE"
+      timeout: 30
+
+    - type: sleep
+      name: "Step 7: Pause 2 seconds"
+      seconds: 2
+
+    - type: arduino
+      name: "Step 8: Nano to 28 rev"
+      cmd: "nano_move:28"
+      expect: "NANO_DONE"
+      timeout: 30
+
+    - type: ev2
+      name: "Step 9: Open EV2 doors (SSH)"
+      action: "open_ev2_doors"
+
+    - type: sleep
+      name: "Step 10: Pause 2 seconds"
+      seconds: 2
+
+    - type: arduino
+      name: "Step 11: Nano SLOW to 35.75 rev"
+      cmd: "nano_slow:36.00"
+      expect: "NANO_DONE"
+      timeout: 45
+
+    - type: arduino
+      name: "Step 12: M1 extend to 4000"
+      cmd: "m1_extend:4000"
+      expect: "M1_DONE"
+      timeout: 60
+
+    - type: arduino
+      name: "Step 13: Nano to 35 rev"
+      cmd: "nano_move:35.25"
+      expect: "NANO_DONE"
+      timeout: 30
+
+    - type: arduino
+      name: "Step 14: M1 extend to 4400"
+      cmd: "m1_extend:4500"
+      expect: "M1_DONE"
+      timeout: 60
+
+    - type: ev2
+      name: "Step 15: Home EV2 doors (SSH)"
+      action: "home_ev2_doors"
+
+    - type: sleep
+      name: "Step 16: Wait 3s then retract M1"
+      seconds: 3
+
+    - type: arduino
+      name: "Step 16b: M1 retract"
+      cmd: "m1_retract"
+      expect: "M1_DONE"
+      timeout: 60
+
+    - type: arduino
+      name: "Step 17a: Nano to 4 rev"
+      cmd: "nano_move:4"
+      expect: "NANO_DONE"
+      timeout: 30
+
+    - type: arduino
+      name: "Step 17b: Nano SLOW to 2 rev"
+      cmd: "nano_slow:2"
+      expect: "NANO_DONE"
+      timeout: 30
+
+    - type: arduino
+      name: "Final: Close lid"
+      cmd: "close_lid"
+      expect: "LID_CLOSED"
+      timeout: 5
+
+
