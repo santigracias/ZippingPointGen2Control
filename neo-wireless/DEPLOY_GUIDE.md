@@ -119,6 +119,7 @@ python3 gen-v2v-beaconv2.py \
   --response-command DESCEND \
   --print-serialized-payload-hex \
   --send --interface wlan0 --count 1
+#Set --count to 0 for an infinite loop
 ```
 
 Change `--zmd-response` to `IN_PROGRESS` if needed.
