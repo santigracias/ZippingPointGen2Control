@@ -64,8 +64,8 @@ iw dev wlan0 del 2>/dev/null
 iw dev phy2-sta0 del 2>/dev/null
 iw phy phy2 interface add wlan0 type monitor
 #Wait a few seconds
-iw dev wlan0 set channel 6
 ip link set wlan0 up
+iw dev wlan0 set channel 6
 iw dev
 ```
 
