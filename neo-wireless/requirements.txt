@@ -1,0 +1,10 @@
+# Neo Wireless Communication System — Python dependencies
+#
+# Install: pip install -r requirements.txt
+# NOTE: On OpenWRT, scapy may need to be installed manually.
+
+scapy>=2.5.0
+pytest>=7.0.0
+cryptography>=41.0.0
+pyyaml>=5.1.1
+pyserial>=3.5
